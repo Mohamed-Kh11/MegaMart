@@ -9,7 +9,7 @@ import shop from "../../images/nike2.webp";
 import shop2 from "../../images/sale.png";
 import shop3 from "../../images/samsung.png";
 import shop4 from "../../images/toshiba.jpg";
-import shop5 from "../../images/iphone17.webp";
+import shop5 from "../../images/iPhone17.webp";
 
 
 import "slick-carousel/slick/slick.css";

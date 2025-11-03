@@ -5,7 +5,7 @@ import { routing } from "../../../i18n/routing";
 import { Toaster } from "react-hot-toast";
 
 import "../../app/globals.css";
-import Providers from "./components/Providers";
+import Providers from "./components/providers";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 
