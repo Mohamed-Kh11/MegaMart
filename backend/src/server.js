@@ -1,4 +1,3 @@
-// server.js (or index.js)
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -10,8 +9,6 @@ import productRoutes from "./routes/productRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import paymentRoutes from "./routes/paymentRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
-import testRoutes from "./routes/testRoutes.js";
-
 
 const app = express();
 
@@ -43,7 +40,6 @@ app.use("/api/users", userRoutes);
 app.use("/api", paymentRoutes);
 app.use("/api/orders", orderRoutes);
 
-
 // -------------------------
 // GLOBAL ERROR HANDLER
 // -------------------------
@@ -53,7 +49,7 @@ app.use((err, req, res, next) => {
 });
 
 // -------------------------
-// DATABASE CONNECTION (lazy)
+// DB Connection Wrapper
 // -------------------------
 let isConnected = false;
 async function ensureDB() {
@@ -62,9 +58,9 @@ async function ensureDB() {
     isConnected = true;
   }
 }
-await ensureDB();
 
-// -------------------------
-// EXPORT FOR VERCEL
-// -------------------------
-export default app;
+// Export a function (serverless handler)
+export default async function handler(req, res) {
+  await ensureDB();
+  return app(req, res);
+}
