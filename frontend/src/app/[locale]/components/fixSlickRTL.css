@@ -1,0 +1,39 @@
+/* Force Slick track to behave as LTR even if <html dir="rtl"> */
+.slick-slider,
+.slick-list,
+.slick-track {
+  direction: ltr !important;
+}
+
+.slick-slide {
+  float: left !important;
+}
+
+/* ===== Improve Dots Visibility in Dark Mode ===== */
+
+/* Base dots styling */
+.slick-dots li button:before {
+  font-size: 12px;
+  opacity: 0.6;
+  color: #444; /* visible on light background */
+  transition: all 0.3s ease;
+}
+
+/* Active dot */
+.slick-dots li.slick-active button:before {
+  opacity: 1;
+  color: #a28533; /* your amber accent */
+}
+
+/* Dark mode override */
+@media (prefers-color-scheme: dark) {
+  .slick-dots li button:before {
+    color: #ccc !important; /* visible on dark blue background */
+    opacity: 0.7 !important;
+  }
+
+  .slick-dots li.slick-active button:before {
+    color: #dab550 !important; /* bright amber/yellow for active dot */
+    opacity: 1 !important;
+  }
+}

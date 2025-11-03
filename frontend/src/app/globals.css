@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+
+::-webkit-scrollbar {
+  width: 10px;
+  transition: 0.3s ease;
+}
+
+/* Track (the background of the scrollbar) */
+::-webkit-scrollbar-track {
+  /* background: white; */
+  background: rgb(180, 179, 179);
+}
+
+::-webkit-scrollbar-thumb {
+  /* background: #facc15;  */
+  background-color: #866c26;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  /* background: #facc15;  */
+  background-color: #755d1d;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: #152872;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  /* background: #facc15;  */
+  background-color: #0f2062;
+}
+
+@font-face {
+  font-family: "Rammetto";
+  src: url("../../public/fonts/Rammetto_One/RammettoOne-Regular.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Amaranth";
+  src: url("../../public/fonts/Amaranth/Amaranth-Regular.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Amaranth";
+  src: url("../../public/fonts/Amaranth/Amaranth-Bold.ttf")
+    format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fugaz";
+  src: url("../../public/fonts/Fugaz_One/FugazOne-Regular.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("../../public/fonts/Ubuntu/Ubuntu-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Ubuntu";
+  src: url("../../public/fonts/Ubuntu/Ubuntu-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Josefin";
+  src: url("../../public/fonts/Josefin_Sans/JosefinSans-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Alex";
+  src: url("../../public/fonts/Alexandria/static/Alexandria-Regular.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Alex";
+  src: url("../../public/fonts/Alexandria/static/Alexandria-Bold.ttf")
+    format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../../public/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../../public/fonts/Poppins/Poppins-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+.pt-22 {
+  padding-top: 88px;
+}
