@@ -11,6 +11,7 @@ import {
   userRole,
   updateProfile,
   updateMyCart,
+  getMyProfile, // 👈 add this
 } from "../controllers/userController.js";
 
 import { auth, adminOnly } from "../../middleware/authMiddleware.js";
@@ -23,9 +24,8 @@ router.post("/login", loginUser);
 router.post("/logout", logoutUser);
 router.put("/profile", auth, updateProfile);
 
-
-// ✅ Protected routes (logged-in users)
-router.get("/me", auth, userRole);
+// ✅ Protected routes
+router.get("/me", auth, getMyProfile); // ✅ Replaced userRole with getMyProfile
 router.get("/:userId", auth, getUserById);
 router.put("/me/cart", auth, updateMyCart);
 router.put("/:userId/cart", auth, updateCart);

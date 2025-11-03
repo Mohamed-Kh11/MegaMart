@@ -37,7 +37,7 @@ export default function PersonalInfoPage() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const { data } = await api.get("/users/me"); // ✅ no headers needed
+        const { data } = await api.get("/users/me");
         setUser(data);
         setFormData({
           name: data.name || "",
@@ -52,11 +52,10 @@ export default function PersonalInfoPage() {
         });
       } catch (err) {
         console.error("❌ Error fetching user:", err);
-        // If token is invalid or expired
         if (err.response?.status === 401 || err.response?.status === 403) {
           localStorage.removeItem("token");
           localStorage.removeItem("user");
-          // router.push(`/${locale}/signin`);
+          router.push(`/${locale}/signin`);
         }
       } finally {
         setLoading(false);
@@ -76,26 +75,19 @@ export default function PersonalInfoPage() {
     } else setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-const handleSave = async () => {
-  try {
-    const token = localStorage.getItem("token");
-    const { data } = await api.put(
-      "/users/profile",
-      formData,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    setUser(data.user);
-    setEditing(false);
-  } catch (err) {
-    console.error("❌ Update error:", err);
-    alert(t("updateError") || "Error updating info");
-  }
-};
-
+  const handleSave = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const { data } = await api.put("/users/profile", formData, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setUser(data.user);
+      setEditing(false);
+    } catch (err) {
+      console.error("❌ Update error:", err);
+      alert(t("updateError") || "Error updating info");
+    }
+  };
 
   if (!mounted || loading)
     return (
@@ -124,7 +116,7 @@ const handleSave = async () => {
           </h1>
 
           <div className="flex flex-wrap gap-3">
-            {/* ✅ Role from verified token (not localStorage) */}
+            {/* ✅ Admin Buttons */}
             {user.role === "admin" && (
               <>
                 <button
@@ -143,6 +135,17 @@ const handleSave = async () => {
                 </button>
               </>
             )}
+
+            {/* ✅ My Orders Button */}
+            <button
+              onClick={() => router.push(`/${locale}/profile/${user._id}/orders`)}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg border border-[#bb9b42] text-[#bb9b42] dark:text-white font-medium hover:bg-[#bb9b42] hover:text-white transition"
+            >
+              <PackageSearch size={18} />
+              {locale === "en" ? "My Orders" : "طلباتي"}
+            </button>
+
+            {/* ✅ Edit / Cancel Button */}
             <button
               onClick={() => setEditing(!editing)}
               className="flex items-center gap-2 px-4 py-2 rounded-lg border border-[#bb9b42] text-[#bb9b42] dark:text-white font-medium hover:bg-[#bb9b42] hover:text-white transition"
@@ -164,7 +167,8 @@ const handleSave = async () => {
           {/* Profile Info */}
           <div className="bg-white dark:bg-MegaDark2 rounded-2xl shadow-md p-8 space-y-6">
             <h2 className="text-xl font-semibold flex items-center gap-2 text-gray-900 dark:text-white">
-              <User size={20} /> {locale === "en" ? "Profile" : "الملف الشخصي"}
+              <User size={20} />{" "}
+              {locale === "en" ? "Profile" : "الملف الشخصي"}
             </h2>
 
             <div className="grid sm:grid-cols-2 gap-6">

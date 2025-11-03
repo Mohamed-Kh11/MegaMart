@@ -14,15 +14,16 @@ export default function OrdersPage() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Wait for hydration
   useEffect(() => setMounted(true), []);
 
+  // ✅ Fetch authenticated user using HttpOnly cookie
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const storedUser = JSON.parse(localStorage.getItem("user"));
-        if (!storedUser?._id) return;
-
-        const { data } = await api.get(`/users/${storedUser._id}`);
+        const { data } = await api.get("/users/me", {
+          withCredentials: true, // Ensures cookie is sent
+        });
         setUser(data);
       } catch (error) {
         console.error("❌ Error fetching user orders:", error);
@@ -30,9 +31,11 @@ export default function OrdersPage() {
         setLoading(false);
       }
     };
+
     fetchUser();
   }, []);
 
+  // ⏳ Loading state
   if (!mounted || loading)
     return (
       <div className="flex justify-center items-center h-[90svh] text-gray-600 dark:text-gray-300">
@@ -40,6 +43,7 @@ export default function OrdersPage() {
       </div>
     );
 
+  // 🚫 No orders
   if (!user || !Array.isArray(user.orders) || user.orders.length === 0)
     return (
       <div className="text-center text-gray-500 dark:text-gray-300 mt-20">
@@ -47,6 +51,7 @@ export default function OrdersPage() {
       </div>
     );
 
+  // ✅ Orders page UI
   return (
     <section className="min-h-[90svh] transition-colors duration-300">
       <div className="min-w-[350px] md:min-w-[500px] lg:min-w-[800px] max-w-6xl mx-auto bg-white dark:bg-MegaDark2 rounded-3xl shadow-xl overflow-hidden">
@@ -134,7 +139,12 @@ export default function OrdersPage() {
                     {t("shippingAddress")}
                   </h3>
                   <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                    {[order.address.street, order.address.city, order.address.state, order.address.country]
+                    {[
+                      order.address.street,
+                      order.address.city,
+                      order.address.state,
+                      order.address.country,
+                    ]
                       .filter(Boolean)
                       .join(", ") || "-"}
                   </p>

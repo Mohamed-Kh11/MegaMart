@@ -342,3 +342,17 @@ export const updateMyCart = async (req, res) => {
       .json({ message: "Error updating cart", error: err.message });
   }
 };
+
+// ✅ GET current logged-in user (cookie-based)
+export const getMyProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select("-password");
+
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    res.json(user);
+  } catch (err) {
+    console.error("❌ getMyProfile error:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+};
