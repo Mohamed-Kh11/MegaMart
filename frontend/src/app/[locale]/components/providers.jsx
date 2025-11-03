@@ -11,7 +11,7 @@ export default function Providers({ children, locale, messages }) {
         <Provider store={store}>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="light"
             enableSystem={true}
             disableTransitionOnChange
           >
