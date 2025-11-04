@@ -12,7 +12,6 @@ import Footer from "./components/Footer";
 export const metadata = {
   title: {
     default: "Mega Mart",
-    template: "%s | Mega Mart",
   },
   description:
     "Discover top-quality products, unbeatable deals, and everything you need — all in one place at Mega Mart.",
