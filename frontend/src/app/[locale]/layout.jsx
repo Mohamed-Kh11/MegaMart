@@ -27,7 +27,7 @@ export const metadata = {
     siteName: "Mega Mart",
     images: [
       {
-        url: "/images/og-home.jpg",
+        url: "/images/linkImage.png",
         width: 1200,
         height: 630,
         alt: "Mega Mart – Online Shopping",
@@ -41,7 +41,7 @@ export const metadata = {
     title: "Mega Mart",
     description:
       "Discover top-quality products and unbeatable deals at Mega Mart.",
-    images: ["/images/og-home.jpg"],
+    images: ["/images/linkImage.png"],
   },
   icons: {
     icon: "/favicon.ico",
