@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Mega Mart | Reset Password",
+  title: "Reset Password",
 };
 
 export default function PasswordLayout({ children }) {

@@ -16,7 +16,7 @@ export const metadata = {
   },
   description:
     "Discover top-quality products, unbeatable deals, and everything you need — all in one place at Mega Mart.",
-  metadataBase: new URL("https://www.megamart.com"),
+  metadataBase: new URL("https://megamart-orcin.vercel.app"),
   alternates: {
     canonical: "/",
   },
@@ -24,7 +24,7 @@ export const metadata = {
     title: "Mega Mart – Everything in One Place",
     description:
       "Shop electronics, beauty, fashion, groceries, and more — all at unbeatable prices.",
-    url: "https://www.megamart.com/",
+    url: "https://megamart-orcin.vercel.app/",
     siteName: "Mega Mart",
     images: [
       {

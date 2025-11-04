@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Mega Mart | Sign Up",
+  title: "Sign Up",
   description: "Join our Mega Mart family now.",
 };
 

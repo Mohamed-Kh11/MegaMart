@@ -5,7 +5,7 @@ import { useTranslations, useLocale } from "next-intl";
 import Image from "next/image";
 import { toast } from "react-hot-toast";
 import Link from "next/link";
-import api from "../lib/axios.js"; // your axios instance (must have withCredentials: true)
+import api from "../lib/axios.js"; 
 
 export default function SignInPage() {
   const t = useTranslations("signin");
@@ -22,7 +22,7 @@ export default function SignInPage() {
     setLoading(true);
 
     try {
-      // ✅ 1. Login — backend sets the cookie automatically
+      //  1. Login — backend sets the cookie automatically
       await api.post(
         "/users/login",
         { email, password, rememberMe },
