@@ -160,9 +160,7 @@ export default function MobileNavDrawer({ links }) {
           </div>
 
           {/* Search bar */}
-          <div className="px-5 py-3 border-b border-white/10">
-            <SearchBar />
-          </div>
+
 
           {/* Links */}
           <nav className="flex flex-col my-5 px-6 space-y-4 text-white text-base">
